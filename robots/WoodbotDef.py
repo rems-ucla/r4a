@@ -16,7 +16,7 @@ INPT = {
 # we have 4 state elements: x, y, th_z (rotation around z axis), d_th_z (angular velocity)
 # their unit are as shown
 # Pos , Ang, AngVel are our custom class that handle units for us
-STATE = dict(x=Pos(unit='m'), y=Pos(unit='m'), th_z=Ang(unit='rad'), d_th_z=AngVel(unit='rad/s'))
+STATE = dict(x=Pos(unit='m'), y=Pos(unit='m'), th_z=Ang(unit='rad'))
 
 # Output definitions
 # we have 5 sensors:

@@ -35,8 +35,7 @@ class WoodbotModel(RobotThread):
 
         x = self.state.get('x')
         y = self.state.get('y')
-        th_z = self.state.get('th_z')
-        d_th_z = self.state.get('d_th_z')
+        th = self.state.get('th_z')
 
         state_np = self.state.ndarray()    # current state in numpy array
         state_nptall = self.state.ndtall()# numpay tall array
@@ -49,19 +48,19 @@ class WoodbotModel(RobotThread):
         R_env = self.dimension.get('R_env')
         max_vel = self.dimension.get('max_vel')
 
-        # TODO: Implement your kinematics model
+        th = self.state.get('th_z')
+        r = d/2
+        jacobian = np.array([r * np.cos(th) / 2, r * np.cos(th) / 2,
+                             r * np.sin(th) / 2, r * np.sin(th) / 2,
+                             -r / W, r / W]).reshape(3,2)
 
-        ###############################
-        # Your model equation here    #
-        # next_state = f(state, inpt) #
-        ###############################
-        # remove this
-        next_state = state_np
-
+        inpt = max_vel * inpt.ndtall() / 100
+        n_state = self.state.ndtall() + jacobian @ inpt * self.run.DT
 
         # save next state
         # this will set the data based on positions
-        self.state.update(next_state)
+        self.state.update(n_state.flatten())
+
 
 
 
