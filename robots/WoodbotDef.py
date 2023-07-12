@@ -32,10 +32,9 @@ OUTPUT = {
     'gyro_z': AngVel(unit='rad/s'),
 }
 
-DIMENSION = {'W': 0.1,
+DIMENSION = {'W': 0.115,
              'd': 0.04,
-             'R_env': 0.4,
-             'max_vel': 6.8}
+             'max_vel': 5.0}
 
 
 class WoodbotDef(DifferentialDriveDef):

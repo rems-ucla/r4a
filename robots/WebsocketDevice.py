@@ -36,7 +36,7 @@ class WebsocketDevice(DeviceBase):
 
     def init(self, *args, **kwargs):
         self.dev_inpt = self.create_drive_space()
-        self.drive_send = DefDict({'wh.r': Fs90rSend, 'wh.l': Fs90rSend})
+        self.drive_send = DefDict({'wh.l': Fs90rSend, 'wh.r': Fs90rSend,})
         self.ws = websocket.WebSocket()
 
     def enable(self, enable: bool, *args, **kwargs):
@@ -58,6 +58,7 @@ class WebsocketDevice(DeviceBase):
         self.ws.send(bytes(cmd), websocket.ABNF.OPCODE_BINARY)
 
     def sense(self, *args, **kwargs):
+        return
         self.ws.send("#S")
         resp_opcode, msg = self.ws.recv_data()
         sensors = struct.unpack("<HH", msg)

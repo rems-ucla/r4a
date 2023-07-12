@@ -77,7 +77,7 @@ class BotRunner:
         if env is None:
             env = default_env
         robot = self.operator.add_robot(robot_def=None, robot=ArucoBot,
-                            robot_args=dict(tracids=track_tag, camera_id=camera_id, env=env),  # probably camera id is 2, 1 or 0
+                            robot_args=dict(tracids=track_tag, camera_id=camera_id, filename=self._create_timestamp('mocap')+'.avi', env=env),  # probably camera id is 2, 1 or 0
                             outputs=self._setup_outputs('mocap'))
         self.robots.append(robot)
 
@@ -108,7 +108,7 @@ class BotRunner:
         # realtime=True, so it'll take 10sec to finish, False will run as fast as possible
         # start_time will let you start t=n. i.e. you want to run input file from t=5sec
         # run_speed multiply the realtime run speed. i.e. you want to debug the robot by running slow
-        self.operator.run(SimConfig(max_duration=duration, dt=0.1, realtime=True, start_time=0, run_speed=1))
+        self.operator.run(SimConfig(max_duration=duration, dt=0.05, realtime=True, start_time=0, run_speed=1))
 
 
 

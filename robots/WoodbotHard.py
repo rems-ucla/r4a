@@ -20,7 +20,7 @@ class Fs90rSend(Percent):
 class WoodbotHard(RobotBase):
     def __init__(self, target_address=TARGET, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.run.DT = 0.1
+        self.run.DT = 0.05
         self.target = target_address
 
     def init_devices(self):
