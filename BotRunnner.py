@@ -94,7 +94,7 @@ class BotRunner:
     def _create_timestamp(self, name):
         return self.output_path + name + time_str() # this will be like: Model_current_data_tim
 
-    def run_robots(self, duration):
+    def run_robots(self, duration, dt=0.05):
         """
         Run all the robots added to the system. At the end of execution, the output will be created.
         :param duration: ow long you want to run the robot.
@@ -108,7 +108,7 @@ class BotRunner:
         # realtime=True, so it'll take 10sec to finish, False will run as fast as possible
         # start_time will let you start t=n. i.e. you want to run input file from t=5sec
         # run_speed multiply the realtime run speed. i.e. you want to debug the robot by running slow
-        self.operator.run(SimConfig(max_duration=duration, dt=0.05, realtime=True, start_time=0, run_speed=1))
+        self.operator.run(SimConfig(max_duration=duration, dt=dt, realtime=True, start_time=0, run_speed=1))
 
 
 
