@@ -3,7 +3,7 @@ from BotRunnner import BotRunner
 RUN_DURATION = 10
 INPUT_TYPE = 'keyboard'
 
-b = BotRunner(debug_mode=True)
+b = BotRunner(debug_mode=False)
 # setup inputs
 b.set_input(input_type=INPUT_TYPE)
 # Add a robot to use. IP ip address is fixed.

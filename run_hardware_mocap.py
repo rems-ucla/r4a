@@ -7,6 +7,9 @@ CAMERA_ID = 0
 # TODO: Change run duration if you want to run the robot longer or shorter.
 RUN_DURATION = 20
 
+# You can adjust motor speed used in the analytical model
+MOTOR_SPEED = 6.5 # rad/sec
+
 INPUT_TYPE = 'keyboard'
 
 # Initialization
@@ -20,7 +23,7 @@ b.add_hardware(ip_address='ws://192.168.4.1:81')
 
 b.add_mocap(camera_id=CAMERA_ID, track_tag=1)
 
-b.add_analytical_model() # analytical model
+b.add_analytical_model(motor_speed=MOTOR_SPEED) # analytical model
 
 # run the robot for 20 sec
 b.run_robots(duration=RUN_DURATION)

@@ -34,11 +34,11 @@ OUTPUT = {
 
 DIMENSION = {'W': 0.115,
              'd': 0.04,
-             'max_vel': 5.0}
+             'max_vel': 6.5}
 
 
 class WoodbotDef(DifferentialDriveDef):
-    def __init__(self, *args, **kwargs):
+    def __init__(self, motor_speed=None, *args, **kwargs):
         DifferentialDriveDef.__init__(self, *args, **kwargs)
         # set definitions for self.inpt
         # self.inpt is a dictionary like custom object
@@ -49,6 +49,9 @@ class WoodbotDef(DifferentialDriveDef):
 
         # adding dimension
         self.dimension.add_def(DIMENSION)
+
+        if motor_speed is not None:
+            self.dimension.update(dict(max_vel=motor_speed))
 
         # Robot name
         self.name = 'woodbot'

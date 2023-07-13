@@ -44,7 +44,7 @@ class BotRunner:
 
         self.operator.set_input(i)
 
-    def add_hardware(self, ip_address='ws://192.168.4.1:81'):
+    def add_hardware(self, ip_address='ws://192.168.4.1:81', ):
         # Setup robot with output you want
         # robot def -> robot universal definitions such as state and input
         # robot -> is actual implemntation (your kinematics code)
@@ -56,14 +56,14 @@ class BotRunner:
                             outputs=self._setup_outputs('hard', animation=False))
         self.robots.append(robot)
 
-    def add_analytical_model(self, ):
+    def add_analytical_model(self, motor_speed=None):
         # Setup robot with output you want
         # robot def -> robot universal definitions such as state and input
         # robot -> is actual implemntation (your kinematics code)
         # outputs -> OutputSystem that show/record the data
         # FileCsvOutput -> save CSV file at the end of run with all inpt, state, output. (You can feed this file to FileCsvInput)
         # # AnimationOutput -> Show the robot states realtime and save the video of it at the end.
-        robot = self.operator.add_robot(robot_def=WoodbotDef, robot=WoodbotModel,
+        robot = self.operator.add_robot(robot_def=WoodbotDef, robot=WoodbotModel, def_args=dict(motor_speed=motor_speed),
                             outputs=self._setup_outputs('model'))
         self.robots.append(robot)
 
