@@ -22,11 +22,6 @@ class BotRunner:
         self.robots = []
 
     def set_input(self, input_type='keyboard', file_path='', *args, **kwargs):
-        """
-
-        :param input_type: 'keyboard', 'csv', or 'joystick'
-        :return:
-        """
         if input_type == 'csv':
             i = FileCsvInput(file_path)
         elif input_type == 'joystick':
